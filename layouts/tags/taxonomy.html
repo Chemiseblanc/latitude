@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="content list">
+    <div class="content-title">
+        <h1> {{ .Title }} </h1>
+        {{ if .Parent.IsHome }}
+        <a href="{{ .Parent.Permalink }}">Back to Home</a>
+        {{ else }}
+        <a href="{{ .Parent.Permalink }}">Back to {{ .Parent.Title }}</a>
+        {{ end }}
+    </div>
+    <main class="flex-container">
+        {{ range .Pages }}
+        <article class="card category">
+            <h1>
+                <a href="{{ .Permalink }}">#{{.Title}}</a>
+            </h1>
+            {{ with .Content}}
+            <p>{{ . }}</p>
+            {{ end }}
+        </article>
+        {{ end }}
+    </main>
+</div>
+{{ end }}

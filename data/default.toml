@@ -1,0 +1,14 @@
+## Following must be in px as they are used when processing images
+# Variables for cards on homepage
+card_width = 360
+card_cover_max_height = 420
+# Maximum width of an article when viewed alone
+article_width = 800
+
+# Determines the character count for creating a dedicated page for text-only posts
+longform_cutoff = 300
+
+# Colour settings
+background_color = "#eeeeee"
+card_background_color = "white"
+content_background_color = "white"

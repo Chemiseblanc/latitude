@@ -1,0 +1,45 @@
+<article class="card post">
+    {{ $content := . }}
+    {{ $longform := false}}
+    {{ if isset .Params "longform" }}
+        {{ $longform = .Params.longform }}
+    {{ else }}
+        {{ $longform = (gt (len .Content) ($.Site.Params.longform_cutoff | default
+        $.Site.Data.default.longform_cutoff))}}
+    {{ end }}
+
+    {{ $original := .Resources.GetMatch "cover" }}
+    {{ if $original }}
+        {{ $card_width := ($.Site.Params.card_width | default $.Site.Data.default.card_width) }}
+        {{ $cover_max_height := ($.Site.Params.card_cover_max_height | default $.Site.Data.default.card_cover_max_height)}}
+        {{ $image := $original.Resize (printf "%dx" $card_width) }}
+        {{ if (and $longform (ge $image.Height $cover_max_height)) }}
+            {{ $image = $original.Fill (printf "%dx%d" $card_width $cover_max_height) }}
+        {{ end }}
+        {{ if $longform}}
+            {{ if ge $image.Height $cover_max_height }}
+                {{ $image = $original.Fill (printf "%dx%d" $card_width $cover_max_height) }}
+            {{ end }}
+            <img src="{{ $image.RelPermalink }}" />
+        {{ else }}
+            <a href="{{ $original.Permalink }}"><img src="{{ $image.RelPermalink }}" /></a>
+        {{ end }}
+    {{ end }}
+    <div class="card-info">
+        <div>
+            <h3> {{ .Title }}</h3>
+            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+        </div>
+        {{ with .GetTerms "tags" }}
+        <div class="tags">
+            {{ range . }}
+            <a href="{{.Permalink}}">#{{ .LinkTitle }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+    <p>{{ .Summary }}</p>
+    {{ if $longform }}
+        <a class="content-link" href="{{ $content.RelPermalink }}">Read More</a>
+    {{ end }}
+</article>

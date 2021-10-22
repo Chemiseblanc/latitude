@@ -1,0 +1,40 @@
+# File paths are relative from the assets folder
+banner: profile/banner.jpg
+profile: profile/profile.jpg
+#resume: profile/Resume-John-Doe-2021.pdf
+name: John Doe
+location: Toronto, ON
+employment:
+- name: BigCorp Ltd.
+  title: Management
+  url: https://www.example.com
+summary: |
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+  Fusce accumsan sollicitudin velit, at posuere turpis efficitur vel. Sed tincidunt auctor nunc vitae fermentum. 
+  Nullam eget diam tellus. 
+
+  Praesent vel augue pharetra, efficitur orci sit amet, cursus tellus. 
+  Quisque convallis luctus imperdiet.
+  Morbi ac finibus ligula. Vivamus vel commodo ex. Vivamus ac lobortis est, sed eleifend erat.
+  Nam ultrices tellus quis sapien porttitor ultricies. Nulla condimentum justo eu leo fringilla, placerat pretium mi iaculis.
+  
+  Nunc venenatis vestibulum tortor eu hendrerit. Aenean vitae nibh mollis justo scelerisque porta sit amet a ligula. 
+  Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+# For the icon parameter use the css class names for font awesome
+# these can be found here: https://fontawesome.com/v5.15/icons
+social:
+- name: Facebook
+  icon: fab fa-facebook-square
+  url: https://facebook.com
+- name: Twitter
+  icon: fab fa-twitter-square
+  url: https://twitter.com
+- name: Instagram
+  icon: fab fa-instagram-square
+  url: https://instagram.com
+- name: Github
+  icon: fab fa-github-square
+  url: https://github.com
+- name: Email
+  icon: fas fa-envelope-square
+  url: mailto://test@example.com

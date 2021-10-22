@@ -1,0 +1,66 @@
+<article class="card profile">
+    {{ $profile := $.Site.Data.about }}
+    {{ with $profile }}
+    <div>
+        {{ with .banner }}
+            {{ $width := ($.Site.Params.card_width | default $.Site.Data.default.card_width)}}
+            <img class="banner" src="{{ ((resources.Get .).Resize (printf "%dx" $width)).Permalink }}" />
+        {{ end }}
+        <div class="info">
+            {{ with .profile }}
+                <img src="{{ ((resources.Get .).Fill "256x256").Permalink }}" />
+            {{ end }}
+            <div>
+                {{ with .name }}
+                    <h1>{{ . }}</h1>
+                {{ end }}
+                {{ with .location }}
+                    <i>{{ . }}</i>
+                {{ end }}
+                {{ range $corp := .employment }}
+                    {{ if $corp.url }}
+                        {{ $corp.title }} at <a href="{{ $corp.url }}">{{ $corp.name }}</a>
+                    {{ else }}
+                        {{ $corp.title }} at {{ $corp.name }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    <div class="bio">
+        {{ with .summary }}
+            <p>{{ . | $.RenderString }}</p>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if not $profile }}
+        <h1>{{ .Site.Title }}</h1>
+    {{ end }}
+    <nav>
+        <h4>Navigation</h4>
+        {{ with .Site.Sections }}
+            {{ range . }}
+                <a href="{{.Permalink}}"> {{ .Title }}</a>
+            {{ end }}
+        {{ end }}
+        {{ with .Site.Taxonomies}}
+            {{ range $name, $taxonomy := . }}
+                <a href="{{ "/" | relLangURL}}{{ $name | urlize }}"> {{ $name | humanize }}</a>
+            {{ end }}
+        {{ end }}
+    </nav>
+    {{ with $profile }}
+        {{ with .social }}
+        <div class="social-box">
+            {{ range . }}
+                <a class="{{ .icon }} fa-2x social-icon" href="{{ .url }}"></a>
+            {{ end }}
+        </div>
+        {{ end }}
+    {{ end }}
+    <div class="copyright">
+        &copy;{{ now.Format "2006"}} All Rights Reserved<br>
+        Created using Latitude for <a href="https://gohugo.io">Hugo</a>
+    </div>
+</article>

@@ -1,0 +1,21 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "Latitude"
+license = "MIT"
+licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
+description = "A card-based horizontal masonry layout theme for hugo"
+homepage = "http://example.com/"
+tags = ["blog", "responsive"]
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "Matthew Gibson"
+  homepage = "https://mgibson.ca"
+
+# If porting an existing theme
+[original]
+  name = ""
+  homepage = ""
+  repo = ""

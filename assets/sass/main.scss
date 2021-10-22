@@ -1,0 +1,430 @@
+:root {
+    --top-spacing: 5em;
+    --side-spacing: 25vw;
+    --height: 99vh;
+    --background-color: {{($.Site.Params.background_color | default $.Site.Data.default.background_color)}} ;
+
+    --card-width: {{($.Site.Params.card_width | default $.Site.Data.default.card_width)}}px;
+    --card-background-color: white;
+    --card-margin: 1em;
+    --card-cover-max-height: auto;
+
+    --content-background-color: white;
+    --content-width: {{($.Site.Params.article_width | default $.Site.Data.default.article_width)}}px;
+    --content-cover-max-height: 400px;
+    --content-margin-width: auto;
+
+    --content-list-width: 1200px;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    :root {
+        --top-spacing: 1em;
+        --side-spacing: 1em;
+        --card-margin: 1em;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    :root {
+        --top-spacing: 0em;
+        --side-spacing: 0.001em;
+        --card-margin: .5em;
+        --content-margin-width: 0em;
+        --card-width: calc(100vw - 2*var(--card-margin));
+
+    }
+}
+
+@media only screen and (max-height: 450px) {
+    :root {
+        --card-cover-max-height: 50vh;
+    }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #333333;
+        --card-background-color: #222222;
+    }
+
+    .card {
+        color: #dddddd;
+    }
+
+    .content {
+        color: #dddddd;
+    }
+
+    a {
+        color: orange;
+
+        &:visited {
+            color: greenyellow;
+        }
+    }
+
+}
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+}
+
+.scroll-container {
+    overflow-x: auto;
+    height: 100vh;
+}
+
+.flex-container-horiz {
+    margin-top: var(--top-spacing);
+    margin-bottom: var(--top-spacing);
+    max-height: calc(var(--height) - 2 * var(--top-spacing) - 1em);
+
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start;
+
+    &:first-child::before {
+        content: "";
+        width: var(--side-spacing);
+        height: 100vh;
+    }
+
+    &:last-child::after {
+        content: "";
+        width: var(--side-spacing);
+        height: 100vh;
+    }
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+
+    > .card {
+        flex: 0 0 auto;
+    }
+}
+
+.card {
+    width: var(--card-width);
+    background-color: var(--card-background-color);
+    margin: var(--card-margin);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #00000044;
+    max-height: var(--height);
+    overflow-y: auto;
+}
+
+.profile {
+    height: 100vh;
+    // position: relative;
+    >h1 {
+        text-align: center;
+    }
+    > div {
+        position: relative;
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .banner {
+            width: 100%;
+            max-height: 16em;
+            margin-bottom: 4em;
+        }
+
+        .info {
+            width: 100%;
+
+            display: flex;
+            flex-flow: row nowrap;
+
+            img {
+                width: 8em;
+                height: 8em;
+                border-radius: 50%;
+                margin: .5em;
+            }
+
+            div {
+                width: 100%;
+                margin: 1em 2em;
+
+                display: flex;
+                flex-flow: column nowrap;
+            }
+
+            img + div {
+                width: 100%;
+                margin: 1em;
+
+                display: flex;
+                flex-flow: column nowrap;
+
+                h1 {
+                    margin: .5em 0;
+                }
+            }
+        }
+
+        .banner + .info {
+            position: absolute;
+            top: 12em;
+            width: 100%;
+
+            display: flex;
+            flex-flow: row nowrap;
+            img {
+                position: absolute;
+                margin: 0 0 0 .5em;
+
+                width: 8em;
+                height: 8em;
+                
+                border-radius: 50%;
+            }
+
+            div {
+                width: 100%;
+                margin: 0em .5em;
+                padding: .5em 4em;
+
+                border-top-left-radius: 4em;
+                border-top-right-radius: 4em;
+
+                background-color: var(--card-background-color);
+                display: flex;
+                flex-flow: column nowrap;
+
+                h1 {
+                    margin: 0;
+                }
+            }
+
+            img + div {
+                width: 100%;
+                margin: 0em .5em 0 .5em;
+                padding: .5em 0em 0 8.5em;
+                
+
+                border-top-left-radius: 4em;
+                border-top-right-radius: 4em;
+
+                background-color: var(--card-background-color);
+                display: flex;
+                flex-flow: column nowrap;
+
+                h1 {
+                    margin: 0;
+                    padding-right: 1.5em;;
+                }
+            }
+        }
+
+
+    }
+    .bio {
+        margin: 1em;
+    }
+
+    nav {
+        margin: 1em auto;
+        max-width:min-content;
+
+        h4 {
+            margin: .5em 0;
+        }
+        a {
+            display: block;
+        }
+    }
+
+    .social-box {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        gap: 1em;
+        margin: 1em;
+    
+        .social-icon {
+            color: gray;
+        }
+    }
+
+    .copyright {
+        width: 100%;
+        margin: .5em auto;
+        text-align: center;
+        font-size: small;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.post {
+    position: relative;
+    overflow-x: hidden;
+
+    > img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        max-height: var(--card-cover-max-height);
+    }
+
+    > .card-info {
+        margin: .5em auto auto .75em;
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+
+        h3 {
+            margin: 0;
+            font-size: larger;
+
+            a {
+                text-decoration: none;
+                color: black;
+
+                &:visited {
+                    color: gray;
+                }
+            }
+        }
+
+        time {
+            font-size: small;
+            font-style: italic;
+            color: gray;
+        }
+
+        .tags {
+            flex: 1;
+            font-size: small;
+            margin: 0 2em 0 1em;
+
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-end;
+            align-content: flex-start;
+            gap: 2px 4px;
+
+            a {
+                text-decoration: none;
+                &:visited {
+                    color: gray;
+                }
+            }
+        }
+    }
+
+    > p {
+        overflow: hidden;
+        margin: 0.5em 1em;
+    }
+
+    > .content-link {
+        display: block;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        text-align: right;
+    }
+}
+
+.category {
+    h1 {
+        text-align: center;
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.content {
+    margin: .5em var(--content-margin-width);
+    max-width: var(--content-width);
+}
+
+.single {
+    overflow: auto;
+
+    background-color: var(--card-background-color);
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #00000044;
+
+    img {
+        object-fit: cover;
+        object-position: center;
+        max-width: 100%;
+    }
+
+    .cover, .feature {
+        width: 100%;
+    }
+
+    > .cover {
+        max-height: var(--content-cover-max-height);
+    }
+
+    > .feature {
+        max-height: auto;
+    }
+
+    > .tags {
+        margin: 0 2em 0 1em;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        gap: 2px 4px;
+
+        a {
+            text-decoration: none;
+            &:visited {
+                color: gray;
+            }
+        }
+    }
+
+    > article {
+        margin: 0 1em;
+
+        h1 {
+            margin: .5em 0 0;
+        }
+
+        .byline {
+            font-size: small;
+            font-style: italic;
+        }
+    }
+
+    .section-link {
+        display: block;
+        margin: .5em;
+        text-align: center;
+    }
+}
+
+.list {
+
+    .content-title {
+        text-align: center;
+        padding: .5em;
+        border-style: none none solid none;
+        border-width: 2px;
+
+        h1 {
+            margin-bottom: .25em;
+        }
+    }
+}

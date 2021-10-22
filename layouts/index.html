@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="scroll-container" id="scrollable">
+    <main class="flex-container-horiz" id="test">
+        {{- partial "profile.html" . -}}
+        {{ range .Site.RegularPages }}
+        {{- partial "card.html" . -}}
+        {{ end }}
+    </main>
+</div>
+<script>
+    window.onload = function () {
+        const container = document.getElementById("scrollable");
+        container.addEventListener("wheel", (evt) => {
+            const card = evt.target.closest(".card")
+            if(card == null || card.scrollHeight <= card.clientHeight){
+                evt.preventDefault();
+                container.scrollLeft += evt.deltaY + evt.deltaX;
+            }
+        });
+    };
+</script>
+{{ end }}

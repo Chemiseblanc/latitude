@@ -1,0 +1,28 @@
+{{ define "main" }}
+<main class="content single">
+    {{ $cover := .Resources.GetMatch "cover" }}
+    {{ if $cover }}
+        {{ $cover_width := ($.Site.Params.article_width | default $.Site.Data.default.article_width) }}
+        <img class="cover" src="{{ ($cover.Resize (printf "%dx" $cover_width)).RelPermalink }}" />
+    {{ end }}
+    {{ with .GetTerms "tags" }}
+    <div class="tags">
+        {{ range . }}
+        <a href="{{.Permalink}}">#{{ .LinkTitle }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+    <article>
+        <header>
+            <h1>{{ .Title }}</h1>
+            <p class="byline">Published on: <time>{{ .Date.Format "Jan 2, 2006" }}</time></p>
+        </header>
+
+        {{ .Content }}
+
+        {{ if not .Parent.IsHome }}
+        <a class="section-link" href="{{ .Parent.Permalink }}">See more in {{ .Parent.Title }}</a>
+        {{ end }}
+    </article>
+</main>
+{{ end }}
