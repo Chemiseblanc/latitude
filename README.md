@@ -1,6 +1,8 @@
 # Latitude for Hugo
 A responsive horizontal scrolling masonry theme for the Hugo static site generator.
 
+![Example website using latitude](example.png)
+
 ## Features
 - Configurable
 - Responsive 
