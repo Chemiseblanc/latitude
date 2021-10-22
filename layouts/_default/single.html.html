@@ -20,9 +20,7 @@
 
         {{ .Content }}
 
-        {{ if not .Parent.IsHome }}
-        <a class="section-link" href="{{ .Parent.Permalink }}">See more in {{ .Parent.Title }}</a>
-        {{ end }}
+        <a class="section-link" href="{{ .Parent.Permalink }}">{{ if .Parent.IsHome }}Return to Home{{ else }}See more in {{ .Parent.Title }}{{ end }}</a>
     </article>
 </main>
 {{ end }}
