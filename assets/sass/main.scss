@@ -10,6 +10,7 @@
 :root {
     --top-spacing: 5em;
     --side-spacing: 25vw;
+    --side-height: 100vh;
     --height: 99vh;
     --background-color: {{($.Site.Params.background_color | default $.Site.Data.default.background_color)}} ;
 
@@ -24,6 +25,8 @@
     --content-margin-width: auto;
 
     --content-list-width: 1200px;
+
+    --profile-height: 100vh;
 }
 
 
@@ -42,7 +45,9 @@
         --card-margin: .5em;
         --content-margin-width: 0em;
         --card-width: calc(100vw - 2*var(--card-margin));
-
+        --height: auto;
+        --side-height: 0;
+        --profile-height: auto;
     }
 }
 
@@ -98,13 +103,13 @@ body {
     &:first-child::before {
         content: "";
         width: var(--side-spacing);
-        height: 100vh;
+        height: var(--side-height);
     }
 
     &:last-child::after {
         content: "";
         width: var(--side-spacing);
-        height: 100vh;
+        height: var(--side-height);
     }
 }
 
@@ -127,12 +132,11 @@ body {
     box-shadow: 5px 5px 5px #00000044;
     max-height: var(--height);
     overflow-y: auto;
-    -webkit-overflow-scrolling: auto;
 }
 
 .profile {
-    height: 100vh;
-    // position: relative;
+    height: var(--profile-height);
+
     >h1 {
         text-align: center;
     }
