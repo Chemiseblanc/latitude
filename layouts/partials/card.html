@@ -9,6 +9,9 @@
     {{ end }}
 
     {{ $original := .Resources.GetMatch "cover" }}
+    {{ with .Params.cover }}
+            {{ $original = $content.Resources.GetMatch . }}
+    {{ end }}
     {{ if $original }}
         {{ $card_width := ($.Site.Params.card_width | default $.Site.Data.default.card_width) }}
         {{ $cover_max_height := ($.Site.Params.card_cover_max_height | default $.Site.Data.default.card_cover_max_height)}}
