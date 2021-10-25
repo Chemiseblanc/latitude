@@ -1,0 +1,118 @@
+# Setup a backend so netlify-cms can communicate with your repo
+# Reference for backend configuration can be found at
+# https://www.netlifycms.org/docs/backends-overview/
+backend:
+  name:
+  repo:
+
+# Example config for three content types that reflect the designs
+# of the lattitude theme
+local_backend: true
+media_folder: static/media/
+public_folder: /media
+collections:
+- name: posts
+  label: Posts
+  label_singular: Post
+  folder: content/posts
+  create: true
+  path: '{{slug}}/index'
+  media_folder: media
+  public_folder: media
+  fields:
+    - label: Title
+      name: title
+      widget: string
+    - label: Publish Date
+      name: date
+      widget: datetime
+    - label: Draft
+      name: draft
+      widget: boolean
+      default: true
+    - label: Generate Seperate Post
+      name: longform
+      widget: hidden
+      default: true
+    - label: Cover Image
+      name: cover
+      widget: image
+    - label: Tags
+      name: tags
+      required: false
+      widget: list
+    - label: Resources
+      name: resources
+      widget: list
+      required: false
+      fields:
+        - label: Name
+          name: name
+          widget: string
+        - label: Source
+          name: src
+          widget: file
+    - label: Body
+      name: body
+      widget: markdown
+- name: shorts
+  label: Short Posts
+  label_singular: Short Post
+  folder: content/shorts
+  create: true
+  fields:
+    - label: Title
+      name: title
+      widget: string
+    - label: Publish Date
+      name: date
+      widget: datetime
+    - label: Draft
+      name: draft
+      widget: hidden
+      default: false
+    - label: Generate Seperate Post
+      name: longform
+      widget: hidden
+      default: false
+    - label: Tags
+      name: tags
+      required: false
+      widget: list
+    - label: Body
+      name: body
+      widget: markdown
+- name: photos
+  label: Photos
+  label_singular: Photo
+  folder: content/photos
+  create: true
+  path: '{{slug}}/index'
+  media_folder: ''
+  public_folder: ''
+  fields:
+    - label: Title
+      name: title
+      widget: string
+    - label: Date
+      name: date
+      widget: datetime
+    - label: Draft
+      name: draft
+      widget: hidden
+      default: false
+    - label: Generate Seperate Post
+      name: longform
+      widget: hidden
+      default: false
+    - label: Photo
+      name: cover
+      widget: image
+    - label: Tags
+      name: tags
+      required: false
+      widget: list
+    - label: Caption
+      name: body
+      widget: markdown
+      required: false

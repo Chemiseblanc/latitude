@@ -8,6 +8,7 @@ A responsive horizontal scrolling masonry theme for the Hugo static site generat
 - Responsive 
 - Supports reader mode
 - Dark mode
+- Example config for [Netlify CMS](https://www.netlifycms.org/)
 
 ## To-Do
 - Proper styling when saved to homescreen on mobile devices
@@ -19,6 +20,9 @@ There's an example file located at data/about.example.yaml
 Under data/default.toml in the theme directory
 ### Why Horizontal?
 As a design challenge
+### Where is the config for Netlify CMS
+In data/netlify-cms.example.yml To use the contents should be copied to your projects
+static/admin/config.yml as part of the setup process.
 
 ## Acknowledgements
 Inspired by the theme [Dream](https://github.com/g1eny0ung/hugo-theme-dream) by Yue Yang
