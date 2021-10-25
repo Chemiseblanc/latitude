@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "Zen Kaku Gothic Antique";
+    src: url("/fonts/ZenKakuGothicAntique-Regular.ttf");
+}
+
+* {
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+
 :root {
     --top-spacing: 5em;
     --side-spacing: 25vw;
@@ -231,6 +240,7 @@ body {
     }
     .bio {
         margin: 1em;
+        padding-top: .5em;
     }
 
     nav {
