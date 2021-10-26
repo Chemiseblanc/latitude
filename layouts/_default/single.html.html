@@ -1,6 +1,10 @@
 {{ define "main" }}
 <main class="content single">
+    {{ $content := . }}
     {{ $cover := .Resources.GetMatch "cover" }}
+    {{ with .Params.cover }}
+            {{ $cover = $content.Resources.GetMatch . }}
+    {{ end }}
     {{ if $cover }}
         {{ $cover_width := ($.Site.Params.article_width | default $.Site.Data.default.article_width) }}
         <img class="cover" src="{{ ($cover.Resize (printf "%dx" $cover_width)).RelPermalink }}" />
