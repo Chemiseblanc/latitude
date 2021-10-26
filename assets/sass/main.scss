@@ -1,3 +1,4 @@
+/* Font Styling */
 @font-face {
     font-family: "Zen Kaku Gothic Antique";
     src: url("/fonts/ZenKakuGothicAntique-Regular.ttf");
@@ -12,6 +13,11 @@
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
 }
 
+code {
+    font-family: "Source Code Pro", monospace;
+}
+
+/* Variable Definition */
 :root {
     --top-spacing: 5em;
     --side-spacing: 25vw;
@@ -34,7 +40,7 @@
     --profile-height: 100vh;
 }
 
-
+/* Screen size adjustments */
 @media only screen and (max-width: 1200px) {
     :root {
         --top-spacing: 1em;
@@ -62,6 +68,7 @@
     }
 }
 
+/* Dark Mode adjustments */
 @media only screen and (prefers-color-scheme: dark) {
     :root {
         --background-color: #333333;
@@ -86,6 +93,7 @@
 
 }
 
+/* Main Styling */
 body {
     margin: 0;
     background-color: var(--background-color);
@@ -437,10 +445,11 @@ body {
     div.highlight pre {
         padding: 1em;
         border-radius: 1em;
+    }
 
-        code {
-            font-family: "Source Code Pro", monospace;
-        }
+    table {
+        padding: 1em;
+        width: 100%;
     }
 }
 
