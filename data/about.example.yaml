@@ -24,17 +24,20 @@ summary: |
 # these can be found here: https://fontawesome.com/v5.15/icons
 social:
 - name: Facebook
-  icon: fab fa-facebook-square
+  icon: icon-facebook
   url: https://facebook.com
 - name: Twitter
-  icon: fab fa-twitter-square
+  icon: icon-twitter
   url: https://twitter.com
 - name: Instagram
-  icon: fab fa-instagram-square
+  icon: icon-instagram
   url: https://instagram.com
 - name: Github
-  icon: fab fa-github-square
+  icon: icon-github
   url: https://github.com
 - name: Email
-  icon: fas fa-envelope-square
+  icon: icon-email
   url: mailto://test@example.com
+- name: LinkedIn
+  icon: icon-linkedin
+  url: https://linkedin.com

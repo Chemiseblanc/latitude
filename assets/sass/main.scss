@@ -1,12 +1,16 @@
 /* Font Styling */
 @font-face {
     font-family: "Zen Kaku Gothic Antique";
-    src: url("/fonts/ZenKakuGothicAntique-Regular.ttf");
+    src: url("/fonts/ZenKakuGothicAntique-Regular.woff2") format("woff2"),
+        url("/fonts/ZenKakuGothicAntique-Regular.woff") format("woff"),
+        url("/fonts/ZenKakuGothicAntique-Regular.ttf") format("ttf");
 }
 
 @font-face {
     font-family: "Source Code Pro";
-    src: url("/fonts/SourceCodePro-Regular.ttf")
+    src: url("/fonts/SourceCodePro-Regular.woff2") format("woff2"),
+        url("/fonts/SourceCodePro-Regular.woff") format("woff"),
+        url("/fonts/SourceCodePro-Regular.ttf") format("ttf");
 }
 
 * {
@@ -282,6 +286,8 @@ body {
     
         .social-icon {
             color: gray;
+            text-decoration: none;
+            transform: scale(1.5);
         }
     }
 
