@@ -12,9 +12,11 @@
         const container = document.getElementById("scrollable");
         container.addEventListener("wheel", (evt) => {
             const card = evt.target.closest(".card")
-            if(card == null || card.scrollHeight <= card.clientHeight){
-                evt.preventDefault();
-                container.scrollLeft += evt.deltaY + evt.deltaX;
+            if (evt.ctrlKey == false) {
+                if(card == null || card.scrollHeight <= card.clientHeight){
+                    evt.preventDefault();
+                    container.scrollLeft += evt.deltaY + evt.deltaX;
+                }
             }
         });
     };
