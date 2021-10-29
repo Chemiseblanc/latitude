@@ -4,11 +4,11 @@
     <div>
         {{ with .banner }}
             {{ $width := ($.Site.Params.card_width | default $.Site.Data.default.card_width)}}
-            <img class="banner" src="{{ ((resources.Get .).Resize (printf "%dx" $width)).Permalink }}" />
+            <img class="banner" src="{{ ((resources.Get .).Resize (printf "%dx" $width)).Permalink }}" alt="Banner Image"/>
         {{ end }}
         <div class="info">
             {{ with .profile }}
-                <img src="{{ ((resources.Get .).Fill "256x256").Permalink }}" />
+                <img src="{{ ((resources.Get .).Fill "256x256").Permalink }}" alt="Profile Picture" />
             {{ end }}
             <div>
                 {{ with .name }}
@@ -38,7 +38,7 @@
         <h1>{{ .Site.Title }}</h1>
     {{ end }}
     <nav>
-        <h4>Navigation</h4>
+        <h2>Navigation</h2>
         {{ with .Site.Sections }}
             {{ range . }}
                 <a href="{{.Permalink}}"> {{ .Title }}</a>
@@ -54,7 +54,7 @@
         {{ with .social }}
         <div class="social-box">
             {{ range . }}
-                <a class="{{ .icon }} social-icon" href="{{ .url }}"></a>
+                <a class="{{ .icon }} social-icon" href="{{ .url }}" aria-label="{{ .name }}"></a>
             {{ end }}
         </div>
         {{ end }}

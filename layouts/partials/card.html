@@ -23,9 +23,9 @@
             {{ if ge $image.Height $cover_max_height }}
                 {{ $image = $original.Fill (printf "%dx%d" $card_width $cover_max_height) }}
             {{ end }}
-            <img src="{{ $image.RelPermalink }}" />
+            <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}"/>
         {{ else }}
-            <a href="{{ $original.Permalink }}"><img src="{{ $image.RelPermalink }}" /></a>
+            <a href="{{ $original.Permalink }}"><img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}"/></a>
         {{ end }}
     {{ end }}
     <div class="card-info">

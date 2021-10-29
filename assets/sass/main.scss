@@ -4,6 +4,7 @@
     src: url("/fonts/ZenKakuGothicAntique-Regular.woff2") format("woff2"),
         url("/fonts/ZenKakuGothicAntique-Regular.woff") format("woff"),
         url("/fonts/ZenKakuGothicAntique-Regular.ttf") format("ttf");
+    font-display: swap;
 }
 
 @font-face {
@@ -11,6 +12,7 @@
     src: url("/fonts/SourceCodePro-Regular.woff2") format("woff2"),
         url("/fonts/SourceCodePro-Regular.woff") format("woff"),
         url("/fonts/SourceCodePro-Regular.ttf") format("ttf");
+    font-display: swap;
 }
 
 * {
@@ -273,7 +275,8 @@ body {
         margin: 1em auto;
         max-width:min-content;
 
-        h4 {
+        h2 {
+            font-size: large;
             margin: .5em 0;
         }
         a {
@@ -341,7 +344,7 @@ body {
         time {
             font-size: small;
             font-style: italic;
-            color: gray;
+            color: #707070;
         }
 
         .tags {
