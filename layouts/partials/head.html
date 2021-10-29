@@ -1,6 +1,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="{{($.Site.Params.background_color | default $.Site.Data.default.background_color)}}" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="{{($.Site.Params.background_color_dark | default $.Site.Data.default.background_color_dark)}}" media="(prefers-color-scheme: dark)">
     {{ partial "head-extras.html" . }}
     <link rel="stylesheet" type="text/css" href="/css/icons.css">
     {{ $style := resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "style.scss" . | toCSS | minify }}

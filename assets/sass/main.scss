@@ -27,14 +27,17 @@ code {
     --side-spacing: 25vw;
     --side-height: 100vh;
     --height: 99vh;
-    --background-color: {{($.Site.Params.background_color | default $.Site.Data.default.background_color)}} ;
+    --background-color: {{($.Site.Params.background_color | default $.Site.Data.default.background_color)}};
+    --background-color-dark: {{($.Site.Params.background_color_dark | default $.Site.Data.default.background_color_dark)}};
 
     --card-width: {{($.Site.Params.card_width | default $.Site.Data.default.card_width)}}px;
-    --card-background-color: white;
+    --card-background-color: {{($.Site.Params.card_background_color | default $.Site.Data.default.card_background_color)}};
+    --card-background-color-dark: {{($.Site.Params.card_background_color_dark | default $.Site.Data.default.card_background_color_dark)}};
     --card-margin: 1em;
     --card-cover-max-height: auto;
 
-    --content-background-color: white;
+    --content-background-color: {{($.Site.Params.content_background_color | default $.Site.Data.default.content_background_color)}};
+    --content-background-color-dark:  {{($.Site.Params.content_background_color_dark | default $.Site.Data.default.content_background_color_dark)}};
     --content-width: {{($.Site.Params.article_width | default $.Site.Data.default.article_width)}}px;
     --content-cover-max-height: 400px;
     --content-margin-width: auto;
@@ -75,8 +78,9 @@ code {
 /* Dark Mode adjustments */
 @media only screen and (prefers-color-scheme: dark) {
     :root {
-        --background-color: #333333;
-        --card-background-color: #222222;
+        --background-color: var(--background-color-dark);
+        --card-background-color: var(--card-background-color-dark);
+        --content-background-color: var(--content-background-color-dark);
     }
 
     .card {

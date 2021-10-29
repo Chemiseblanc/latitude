@@ -12,3 +12,6 @@ longform_cutoff = 300
 background_color = "#eeeeee"
 card_background_color = "white"
 content_background_color = "white"
+background_color_dark = "#333333"
+card_background_color_dark = "#222222"
+content_background_color_dark = "#222222"
