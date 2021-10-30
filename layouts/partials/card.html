@@ -13,9 +13,23 @@
             {{ $original = $content.Resources.GetMatch . }}
     {{ end }}
     {{ if $original }}
+    	{{ $orientation := 1 }}
+	{{ $rotation := "" }}
+	{{ with $original.Exif }}
+		{{ $orientation = .Tags.Orientation }}
+	{{ end }}
+	{{ if eq $orientation 8 }}
+		{{ $rotation = "r90" }}
+	{{ end }}
+	{{ if eq $orientation 3 }}
+		{{ $rotation = "r180" }}
+	{{ end }}
+	{{ if eq $orientation 6 }}
+		{{ $rotation = "r270" }}
+	{{ end }}
         {{ $card_width := ($.Site.Params.card_width | default $.Site.Data.default.card_width) }}
         {{ $cover_max_height := ($.Site.Params.card_cover_max_height | default $.Site.Data.default.card_cover_max_height)}}
-        {{ $image := $original.Resize (printf "%dx" $card_width) }}
+        {{ $image := $original.Resize (printf "%dx %s" $card_width $rotation) }}
         {{ if (and $longform (ge $image.Height $cover_max_height)) }}
             {{ $image = $original.Fill (printf "%dx%d" $card_width $cover_max_height) }}
         {{ end }}
